@@ -6,6 +6,9 @@ import cv2
 import numpy as np
 import pandas as pd
 import time
+import pickle
+import warnings
+warnings.filterwarnings("ignore")
 
 app = Flask(__name__)
 
@@ -31,7 +34,7 @@ def predict_image(image, model, transform, label_map):
         _, predicted = torch.max(outputs, 1)
     return predicted.item()
 
-train_csv = "../data-collection/Training_set.csv"
+train_csv = r"C:\Users\HP\Documents\courses_conestoga\comsign\data-collection\Training_set.csv"
 df = pd.read_csv(train_csv)
 label_map = create_label_map(df)
 reverse_label_map = {idx: label for label, idx in label_map.items()}
@@ -45,7 +48,7 @@ transform = transforms.Compose([
 
 num_classes = len(label_map)
 model = initialize_model(num_classes)
-model.load_state_dict(torch.load("//training/mobilenet_model.h5", map_location=device))
+model.load_state_dict(torch.load(r"C:\Users\HP\Documents\courses_conestoga\comsign\training\mobilenet_model.pth", map_location=device))
 model.to(device)
 
 cap = cv2.VideoCapture(0)
