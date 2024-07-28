@@ -21,11 +21,11 @@
 
 ## Model Details
 ### The model is a MobileNetV2 architecture, modified to predict a custom number of classes based on the training data.
-### The model weights are loaded from a `.h5` file.
+### The model weights are loaded from a `.pth` file.
 ### A label map is created from a CSV file containing training data labels.
 
 ## Notes
-### Ensure the `mobilenet_model.h5` file is located in the `training` directory.
+### Ensure the `mobilenet_model.pth` file is located in the `training` directory.
 ### The CSV file for creating the label map should be in the `data-collection` directory.
 ### The application uses the CPU by default, but if a CUDA-compatible GPU is available, it will use it for faster predictions.
 
